@@ -1,0 +1,728 @@
+{
+  "version": "5.0",
+  "deps": {
+    "@angular/animations": "~14.2.0",
+    "@angular/common": "~14.2.0",
+    "@angular/compiler": "~14.2.0",
+    "@angular/core": "~14.2.0",
+    "@angular/forms": "~14.2.0",
+    "@angular/platform-browser": "~14.2.0",
+    "@angular/platform-browser-dynamic": "~14.2.0",
+    "@angular/router": "~14.2.0",
+    "@nrwl/angular": "14.7.5",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4",
+    "@angular-devkit/build-angular": "~14.2.0",
+    "@angular-eslint/eslint-plugin": "~14.0.4",
+    "@angular-eslint/eslint-plugin-template": "~14.0.4",
+    "@angular-eslint/template-parser": "~14.0.4",
+    "@angular/cli": "~14.2.0",
+    "@angular/compiler-cli": "~14.2.0",
+    "@angular/language-service": "~14.2.0",
+    "@nrwl/cli": "14.7.5",
+    "@nrwl/cypress": "14.7.5",
+    "@nrwl/eslint-plugin-nx": "14.7.5",
+    "@nrwl/jest": "14.7.5",
+    "@nrwl/linter": "14.7.5",
+    "@nrwl/workspace": "14.7.5",
+    "@types/jest": "28.1.1",
+    "@types/node": "16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
+    "cypress": "^10.7.0",
+    "eslint": "~8.15.0",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "jest": "28.1.1",
+    "jest-environment-jsdom": "28.1.1",
+    "jest-preset-angular": "~12.2.2",
+    "nx": "14.7.5",
+    "prettier": "^2.6.2",
+    "ts-jest": "28.0.5",
+    "ts-node": "10.9.1",
+    "typescript": "~4.8.2"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "nodes": {
+    "my-app-e2e": {
+      "name": "my-app-e2e",
+      "type": "e2e",
+      "data": {
+        "root": "apps/my-app-e2e",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/my-app-e2e/src",
+        "projectType": "application",
+        "targets": {
+          "e2e": {
+            "executor": "@nrwl/cypress:cypress",
+            "options": {
+              "cypressConfig": "apps/my-app-e2e/cypress.config.ts",
+              "devServerTarget": "my-app:serve:development",
+              "testingType": "e2e"
+            },
+            "configurations": {
+              "production": {
+                "devServerTarget": "my-app:serve:production"
+              }
+            }
+          },
+          "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "apps/my-app-e2e/**/*.{js,ts}"
+              ]
+            }
+          }
+        },
+        "tags": [],
+        "implicitDependencies": [
+          "my-app"
+        ],
+        "files": [
+          {
+            "file": "apps/my-app-e2e/.eslintrc.json",
+            "hash": "61e70d2f28c46a41c444549e6760add1c517e5e37dee4473c4ed919ef4841d09"
+          },
+          {
+            "file": "apps/my-app-e2e/cypress.config.ts",
+            "hash": "9b4d79a41251c2881e0cc8b38e5d90504fad7b7c5c5b251d27cb6d03acc45549",
+            "deps": [
+              "npm:cypress",
+              "npm:@nrwl/cypress"
+            ]
+          },
+          {
+            "file": "apps/my-app-e2e/project.json",
+            "hash": "d2bd326b460d7cd1931390329641469a198f79da4bf0d0bb7f3d7ba6ebed3853"
+          },
+          {
+            "file": "apps/my-app-e2e/src/e2e/app.cy.ts",
+            "hash": "ad3b9658cf6920da682a3d7b71d62ee9f68dc3f59ee81b8f0161d7aae890b2bc"
+          },
+          {
+            "file": "apps/my-app-e2e/src/fixtures/example.json",
+            "hash": "ac95809a3706b1fb0ac8814225d6b0ef8813607cd1ea7e18d6207ae99bc9f840"
+          },
+          {
+            "file": "apps/my-app-e2e/src/support/app.po.ts",
+            "hash": "bcc4c2233d32766923fb5b6dc0c28313da93fb853244a096b9807eedc942e132"
+          },
+          {
+            "file": "apps/my-app-e2e/src/support/commands.ts",
+            "hash": "76b43d91335e2f84f76601b368d374e050b7de08f58f746d48bf036b5b8d184b"
+          },
+          {
+            "file": "apps/my-app-e2e/src/support/e2e.ts",
+            "hash": "d4f67c07fdbc99202f61bda40b843b1de43b88193b23b60b8b9fdbe280727986"
+          },
+          {
+            "file": "apps/my-app-e2e/tsconfig.json",
+            "hash": "10571cc1de103726af47e8733dd9d905d2407c61e6c537190382dda13afca256"
+          }
+        ]
+      }
+    },
+    "my-app": {
+      "name": "my-app",
+      "type": "app",
+      "data": {
+        "root": "apps/my-app",
+        "projectType": "application",
+        "sourceRoot": "apps/my-app/src",
+        "prefix": "main-app",
+        "targets": {
+          "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "options": {
+              "outputPath": "dist/apps/my-app",
+              "index": "apps/my-app/src/index.html",
+              "main": "apps/my-app/src/main.ts",
+              "polyfills": "apps/my-app/src/polyfills.ts",
+              "tsConfig": "apps/my-app/tsconfig.app.json",
+              "assets": [
+                "apps/my-app/src/favicon.ico",
+                "apps/my-app/src/assets"
+              ],
+              "styles": [
+                "apps/my-app/src/styles.css"
+              ],
+              "scripts": []
+            },
+            "configurations": {
+              "production": {
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "500kb",
+                    "maximumError": "1mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "2kb",
+                    "maximumError": "4kb"
+                  }
+                ],
+                "fileReplacements": [
+                  {
+                    "replace": "apps/my-app/src/environments/environment.ts",
+                    "with": "apps/my-app/src/environments/environment.prod.ts"
+                  }
+                ],
+                "outputHashing": "all"
+              },
+              "development": {
+                "buildOptimizer": false,
+                "optimization": false,
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "sourceMap": true,
+                "namedChunks": true
+              }
+            },
+            "defaultConfiguration": "production"
+          },
+          "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+              "production": {
+                "browserTarget": "my-app:build:production"
+              },
+              "development": {
+                "browserTarget": "my-app:build:development"
+              }
+            },
+            "defaultConfiguration": "development"
+          },
+          "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "browserTarget": "my-app:build"
+            }
+          },
+          "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+              "lintFilePatterns": [
+                "apps/my-app/**/*.ts",
+                "apps/my-app/**/*.html"
+              ]
+            }
+          },
+          "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": [
+              "coverage/apps/my-app"
+            ],
+            "options": {
+              "jestConfig": "apps/my-app/jest.config.ts",
+              "passWithNoTests": true
+            }
+          }
+        },
+        "tags": [],
+        "files": [
+          {
+            "file": "apps/my-app/.browserslistrc",
+            "hash": "4d917afcae808de480b3f540909d6f0a40ea6650bf6376a72d9708c8b8330640"
+          },
+          {
+            "file": "apps/my-app/.eslintrc.json",
+            "hash": "d211cf3c6f5cec668af66c34a5e6fe16f4d80d085abc77797b2b364b970a08a0"
+          },
+          {
+            "file": "apps/my-app/jest.config.ts",
+            "hash": "607e8500ff633158cda61a72adc975cf6b7b8a6c4f9b511be4536848f2266dd8"
+          },
+          {
+            "file": "apps/my-app/project.json",
+            "hash": "74d9a83ebbc1614cdc9eda9dec3a01ffee6593b6104fb8092d31f659b6c4848a"
+          },
+          {
+            "file": "apps/my-app/src/app/app.component.css",
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "file": "apps/my-app/src/app/app.component.html",
+            "hash": "4cecbbb3c84bba10881fa8fd6b98da405c59e4f4e9994a99ac95011c335f1470"
+          },
+          {
+            "file": "apps/my-app/src/app/app.component.spec.ts",
+            "hash": "22d75c942b9e01fa23dc6a2f75277fc98aa468813b9c78bb23fdeab44902f3fc",
+            "deps": [
+              "npm:@angular/core"
+            ]
+          },
+          {
+            "file": "apps/my-app/src/app/app.component.ts",
+            "hash": "41b2eb9afbea9b3c60e37f628f2e7fa508af9b2ce373f970c887263dcd9af59f",
+            "deps": [
+              "npm:@angular/core"
+            ]
+          },
+          {
+            "file": "apps/my-app/src/app/app.module.ts",
+            "hash": "e4f9fea4b09bb0c0a18a2f481194a4ab985cf77218567ec87843aab75e1a32a9",
+            "deps": [
+              "npm:@angular/core",
+              "npm:@angular/platform-browser"
+            ]
+          },
+          {
+            "file": "apps/my-app/src/app/nx-welcome.component.ts",
+            "hash": "969156c5e0dd0e5934e467836283c3b819b10a0e094f0cb795f650d33f9295cb",
+            "deps": [
+              "npm:@angular/core"
+            ]
+          },
+          {
+            "file": "apps/my-app/src/assets/.gitkeep",
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "file": "apps/my-app/src/environments/environment.prod.ts",
+            "hash": "8849c3a0d8fb1c2418184242899a41382f759169fe9e8c3b73118c1fa844de41"
+          },
+          {
+            "file": "apps/my-app/src/environments/environment.ts",
+            "hash": "a6d76784ad8f061b6143b6275ed4aaa7b404a62adc242f1f1f428ab565cb3b6e"
+          },
+          {
+            "file": "apps/my-app/src/favicon.ico",
+            "hash": "f8410ea5598b43087f77e64a6b8732f6a7ae6b0a09c94497b383e1e92df95c9c"
+          },
+          {
+            "file": "apps/my-app/src/index.html",
+            "hash": "7e6c54ef1c1dc29a16f7aa7784194adcc725a6bd499f3d99d3104fadc2a62cc9"
+          },
+          {
+            "file": "apps/my-app/src/main.ts",
+            "hash": "37bab3122bef8ac968ed83fa88b004c3732ee36ec50d8af0e90213fa2909369f",
+            "deps": [
+              "npm:@angular/core",
+              "npm:@angular/platform-browser-dynamic"
+            ]
+          },
+          {
+            "file": "apps/my-app/src/polyfills.ts",
+            "hash": "76bb0a414ce720a899dbc637ed3593942652ba3105a9e3a20b91db7525ed7022",
+            "deps": [
+              "npm:zone.js"
+            ]
+          },
+          {
+            "file": "apps/my-app/src/styles.css",
+            "hash": "c7295b915b6a250b910d30ff3b9d1991b6f43c9474d3afafc6cba59eee44383e"
+          },
+          {
+            "file": "apps/my-app/src/test-setup.ts",
+            "hash": "a067f4af7595fbedadd5450bb92dd9460f5c933b584055782d866b1a029afc05",
+            "deps": [
+              "npm:jest-preset-angular"
+            ]
+          },
+          {
+            "file": "apps/my-app/tsconfig.app.json",
+            "hash": "caf4c1c961fd28ecc3792b03f958ea766d80bce44751a907c8b85b403d188d5b"
+          },
+          {
+            "file": "apps/my-app/tsconfig.editor.json",
+            "hash": "80c7dc80145c66774415b76c6a586928e332218e0414a9914fea57b8ab9d361e"
+          },
+          {
+            "file": "apps/my-app/tsconfig.json",
+            "hash": "cc2569423f392c62c8e36d7615eff4aed75e2d79c7e409993116dc6ce748079d"
+          },
+          {
+            "file": "apps/my-app/tsconfig.spec.json",
+            "hash": "95472ec08e0a3b254dd579c15e002c35279d70542755b04823ed9e24ff00f3ae"
+          }
+        ]
+      }
+    }
+  },
+  "externalNodes": {
+    "npm:@angular/animations": {
+      "type": "npm",
+      "name": "npm:@angular/animations",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/animations"
+      }
+    },
+    "npm:@angular/common": {
+      "type": "npm",
+      "name": "npm:@angular/common",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/common"
+      }
+    },
+    "npm:@angular/compiler": {
+      "type": "npm",
+      "name": "npm:@angular/compiler",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/compiler"
+      }
+    },
+    "npm:@angular/core": {
+      "type": "npm",
+      "name": "npm:@angular/core",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/core"
+      }
+    },
+    "npm:@angular/forms": {
+      "type": "npm",
+      "name": "npm:@angular/forms",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/forms"
+      }
+    },
+    "npm:@angular/platform-browser": {
+      "type": "npm",
+      "name": "npm:@angular/platform-browser",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/platform-browser"
+      }
+    },
+    "npm:@angular/platform-browser-dynamic": {
+      "type": "npm",
+      "name": "npm:@angular/platform-browser-dynamic",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/platform-browser-dynamic"
+      }
+    },
+    "npm:@angular/router": {
+      "type": "npm",
+      "name": "npm:@angular/router",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/router"
+      }
+    },
+    "npm:@nrwl/angular": {
+      "type": "npm",
+      "name": "npm:@nrwl/angular",
+      "data": {
+        "version": "14.7.5",
+        "packageName": "@nrwl/angular"
+      }
+    },
+    "npm:rxjs": {
+      "type": "npm",
+      "name": "npm:rxjs",
+      "data": {
+        "version": "~7.5.0",
+        "packageName": "rxjs"
+      }
+    },
+    "npm:tslib": {
+      "type": "npm",
+      "name": "npm:tslib",
+      "data": {
+        "version": "^2.3.0",
+        "packageName": "tslib"
+      }
+    },
+    "npm:zone.js": {
+      "type": "npm",
+      "name": "npm:zone.js",
+      "data": {
+        "version": "~0.11.4",
+        "packageName": "zone.js"
+      }
+    },
+    "npm:@angular-devkit/build-angular": {
+      "type": "npm",
+      "name": "npm:@angular-devkit/build-angular",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular-devkit/build-angular"
+      }
+    },
+    "npm:@angular-eslint/eslint-plugin": {
+      "type": "npm",
+      "name": "npm:@angular-eslint/eslint-plugin",
+      "data": {
+        "version": "~14.0.4",
+        "packageName": "@angular-eslint/eslint-plugin"
+      }
+    },
+    "npm:@angular-eslint/eslint-plugin-template": {
+      "type": "npm",
+      "name": "npm:@angular-eslint/eslint-plugin-template",
+      "data": {
+        "version": "~14.0.4",
+        "packageName": "@angular-eslint/eslint-plugin-template"
+      }
+    },
+    "npm:@angular-eslint/template-parser": {
+      "type": "npm",
+      "name": "npm:@angular-eslint/template-parser",
+      "data": {
+        "version": "~14.0.4",
+        "packageName": "@angular-eslint/template-parser"
+      }
+    },
+    "npm:@angular/cli": {
+      "type": "npm",
+      "name": "npm:@angular/cli",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/cli"
+      }
+    },
+    "npm:@angular/compiler-cli": {
+      "type": "npm",
+      "name": "npm:@angular/compiler-cli",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/compiler-cli"
+      }
+    },
+    "npm:@angular/language-service": {
+      "type": "npm",
+      "name": "npm:@angular/language-service",
+      "data": {
+        "version": "~14.2.0",
+        "packageName": "@angular/language-service"
+      }
+    },
+    "npm:@nrwl/cli": {
+      "type": "npm",
+      "name": "npm:@nrwl/cli",
+      "data": {
+        "version": "14.7.5",
+        "packageName": "@nrwl/cli"
+      }
+    },
+    "npm:@nrwl/cypress": {
+      "type": "npm",
+      "name": "npm:@nrwl/cypress",
+      "data": {
+        "version": "14.7.5",
+        "packageName": "@nrwl/cypress"
+      }
+    },
+    "npm:@nrwl/eslint-plugin-nx": {
+      "type": "npm",
+      "name": "npm:@nrwl/eslint-plugin-nx",
+      "data": {
+        "version": "14.7.5",
+        "packageName": "@nrwl/eslint-plugin-nx"
+      }
+    },
+    "npm:@nrwl/jest": {
+      "type": "npm",
+      "name": "npm:@nrwl/jest",
+      "data": {
+        "version": "14.7.5",
+        "packageName": "@nrwl/jest"
+      }
+    },
+    "npm:@nrwl/linter": {
+      "type": "npm",
+      "name": "npm:@nrwl/linter",
+      "data": {
+        "version": "14.7.5",
+        "packageName": "@nrwl/linter"
+      }
+    },
+    "npm:@nrwl/workspace": {
+      "type": "npm",
+      "name": "npm:@nrwl/workspace",
+      "data": {
+        "version": "14.7.5",
+        "packageName": "@nrwl/workspace"
+      }
+    },
+    "npm:@types/jest": {
+      "type": "npm",
+      "name": "npm:@types/jest",
+      "data": {
+        "version": "28.1.1",
+        "packageName": "@types/jest"
+      }
+    },
+    "npm:@types/node": {
+      "type": "npm",
+      "name": "npm:@types/node",
+      "data": {
+        "version": "16.11.7",
+        "packageName": "@types/node"
+      }
+    },
+    "npm:@typescript-eslint/eslint-plugin": {
+      "type": "npm",
+      "name": "npm:@typescript-eslint/eslint-plugin",
+      "data": {
+        "version": "^5.36.1",
+        "packageName": "@typescript-eslint/eslint-plugin"
+      }
+    },
+    "npm:@typescript-eslint/parser": {
+      "type": "npm",
+      "name": "npm:@typescript-eslint/parser",
+      "data": {
+        "version": "^5.36.1",
+        "packageName": "@typescript-eslint/parser"
+      }
+    },
+    "npm:cypress": {
+      "type": "npm",
+      "name": "npm:cypress",
+      "data": {
+        "version": "^10.7.0",
+        "packageName": "cypress"
+      }
+    },
+    "npm:eslint": {
+      "type": "npm",
+      "name": "npm:eslint",
+      "data": {
+        "version": "~8.15.0",
+        "packageName": "eslint"
+      }
+    },
+    "npm:eslint-config-prettier": {
+      "type": "npm",
+      "name": "npm:eslint-config-prettier",
+      "data": {
+        "version": "8.1.0",
+        "packageName": "eslint-config-prettier"
+      }
+    },
+    "npm:eslint-plugin-cypress": {
+      "type": "npm",
+      "name": "npm:eslint-plugin-cypress",
+      "data": {
+        "version": "^2.10.3",
+        "packageName": "eslint-plugin-cypress"
+      }
+    },
+    "npm:jest": {
+      "type": "npm",
+      "name": "npm:jest",
+      "data": {
+        "version": "28.1.1",
+        "packageName": "jest"
+      }
+    },
+    "npm:jest-environment-jsdom": {
+      "type": "npm",
+      "name": "npm:jest-environment-jsdom",
+      "data": {
+        "version": "28.1.1",
+        "packageName": "jest-environment-jsdom"
+      }
+    },
+    "npm:jest-preset-angular": {
+      "type": "npm",
+      "name": "npm:jest-preset-angular",
+      "data": {
+        "version": "~12.2.2",
+        "packageName": "jest-preset-angular"
+      }
+    },
+    "npm:nx": {
+      "type": "npm",
+      "name": "npm:nx",
+      "data": {
+        "version": "14.7.5",
+        "packageName": "nx"
+      }
+    },
+    "npm:prettier": {
+      "type": "npm",
+      "name": "npm:prettier",
+      "data": {
+        "version": "^2.6.2",
+        "packageName": "prettier"
+      }
+    },
+    "npm:ts-jest": {
+      "type": "npm",
+      "name": "npm:ts-jest",
+      "data": {
+        "version": "28.0.5",
+        "packageName": "ts-jest"
+      }
+    },
+    "npm:ts-node": {
+      "type": "npm",
+      "name": "npm:ts-node",
+      "data": {
+        "version": "10.9.1",
+        "packageName": "ts-node"
+      }
+    },
+    "npm:typescript": {
+      "type": "npm",
+      "name": "npm:typescript",
+      "data": {
+        "version": "~4.8.2",
+        "packageName": "typescript"
+      }
+    }
+  },
+  "dependencies": {
+    "my-app-e2e": [
+      {
+        "source": "my-app-e2e",
+        "target": "my-app",
+        "type": "implicit"
+      },
+      {
+        "source": "my-app-e2e",
+        "target": "npm:cypress",
+        "type": "static"
+      },
+      {
+        "source": "my-app-e2e",
+        "target": "npm:@nrwl/cypress",
+        "type": "static"
+      }
+    ],
+    "my-app": [
+      {
+        "source": "my-app",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "my-app",
+        "target": "npm:@angular/platform-browser",
+        "type": "static"
+      },
+      {
+        "source": "my-app",
+        "target": "npm:@angular/platform-browser-dynamic",
+        "type": "static"
+      },
+      {
+        "source": "my-app",
+        "target": "npm:zone.js",
+        "type": "static"
+      },
+      {
+        "source": "my-app",
+        "target": "npm:jest-preset-angular",
+        "type": "static"
+      }
+    ]
+  }
+}
